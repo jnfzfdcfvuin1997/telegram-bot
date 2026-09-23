@@ -1,0 +1,146 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["unicorn", "typescript", "oxc", "import", "promise", "vitest"],
+  "env": {
+    "browser": true,
+    "es2024": true,
+    "node": true,
+    "builtin": true
+  },
+  "globals": {},
+  "settings": {},
+  "ignorePatterns": [
+    ".git/",
+    "**/*.d.ts",
+    "**/*.test.ts",
+    "**/*.js",
+    "**/*.cjs",
+    "**/*.mjs",
+    "**/*.jsx",
+    "**/*.md.ts",
+    "**/cdk.out/",
+    "**/dist/",
+    "**/node_modules/",
+    "**/bp_modules/",
+    "**/.botpress/",
+    "**/gen/",
+    "**/bp_modules/",
+    "**/.turbo/",
+    "**/.genenv/",
+    "packages/llmz/examples/",
+    "node_modules/",
+    "**/.adk/",
+    "**/.ignore.me.*"
+  ],
+  "overrides": [
+    {
+      "files": ["**/*.{ts,tsx}"],
+      "rules": {
+        "eslint/no-console": [
+          "warn",
+          {
+            "allow": [
+              "warn",
+              "dir",
+              "time",
+              "timeEnd",
+              "timeLog",
+              "trace",
+              "assert",
+              "clear",
+              "count",
+              "countReset",
+              "group",
+              "groupEnd",
+              "table",
+              "debug",
+              "info",
+              "dirxml",
+              "error",
+              "groupCollapsed",
+              "Console",
+              "profile",
+              "profileEnd",
+              "timeStamp",
+              "context"
+            ]
+          }
+        ],
+        "eslint/no-cond-assign": "error",
+        "eslint/no-const-assign": "error",
+        "eslint/no-debugger": "error",
+        "eslint/no-sparse-arrays": "error",
+        "eslint/no-unreachable": "error",
+        "eslint/max-lines-per-function": "off",
+        "eslint/default-case": "off",
+        "eslint/default-case-last": "error",
+        "eslint/max-depth": "error",
+        "eslint/no-eval": "error",
+        "eslint/no-return-assign": "error",
+        "eslint/no-var": "error",
+        "eslint/no-duplicate-imports": "error",
+        "typescript/consistent-type-definitions": ["error", "type"],
+        "typescript/prefer-namespace-keyword": "error",
+        "eslint/curly": ["error", "multi-line"],
+        "eslint/eqeqeq": ["error", "smart"],
+        "typescript/no-unused-vars": "off",
+        "eslint/no-unused-vars": [
+          "error",
+          {
+            "vars": "all",
+            "varsIgnorePattern": "^_",
+            "args": "after-used",
+            "argsIgnorePattern": "^_"
+          }
+        ],
+        "unicorn/no-empty-file": "error",
+        "unicorn/no-lonely-if": "off",
+        "arrow-body-style": "off",
+        "complexity": ["off"],
+        "prefer-const": "warn",
+        "no-shadow": "off",
+        "typescript/no-floating-promises": [
+          "error",
+          {
+            "checkThenables": true
+          }
+        ],
+        "typescript/no-misused-promises": "error",
+        "typescript/explicit-member-accessibility": "error",
+        "eslint/object-shorthand": "error",
+        "naming/private-member-underscore": "error",
+        "import-js/order": [
+          "error",
+          {
+            "groups": [["builtin", "external"], "parent", "index", "sibling"],
+            "alphabetize": {
+              "order": "asc",
+              "caseInsensitive": true
+            },
+            "pathGroupsExcludedImportTypes": ["builtin"]
+          }
+        ]
+      }
+    },
+    {
+      "files": ["packages/zui/**"],
+      "rules": {
+        "typescript/explicit-member-accessibility": "off"
+      }
+    }
+  ],
+  "categories": {
+    "correctness": "off",
+    "pedantic": "off",
+    "perf": "off",
+    "suspicious": "off"
+  },
+  "jsPlugins": [
+    "./scripts/oxlint-plugin-naming.mjs",
+    {
+      "name": "import-js",
+      "specifier": "eslint-plugin-import"
+    }
+  ],
+  "rules": {}
+}
